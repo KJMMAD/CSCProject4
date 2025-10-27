@@ -31,24 +31,21 @@ int main()
         else
             days = 28;
     }
-    else {
-        switch (month) {
-        case 1:
-        case 3:
-        case 5:
-        case 7:
-        case 8:
-        case 10:
-        case 12:
+    else if (month <= 7){
+        if (month % 2 == 1) {
             days = 31;
-            break;
-        case 4:
-        case 6:
-        case 9:
-        case 11:
+        }
+        else
             days = 30;
-            break;
+    }
+    else {
+        if (month % 2 == 1) {
+            days = 30;
+        }
+        else {
+            days = 31;
         }
     }
+
     cout << days << " days";
 }
