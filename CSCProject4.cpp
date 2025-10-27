@@ -1,38 +1,76 @@
 #include <iostream>
-#include <iomanip>
+#include <cmath>
 using namespace std;
+
 int main()
 {
-    double weight, miles, rate;
+	int choice;
+	cout << "Geometry Calculator\n";
+	cout << "1.Calculate area of a circle\n2. Calculate area of a rectangle\n3. Calculate area of a triangle\n4.Quit\nPick your choice(1 - 4) ";
+	cin >> choice;
+	
+	if (choice < 1 || choice > 4) {
+		cout << "\nInvalid choice";
+		return 0;
+	}
+	double problem;
+	switch (choice) {
+	case 1:
+		double r;
 
-    cout << "What is the weight of your package? (kg)\n";
-    cin >> weight;
+		cout << "Enter the radius of your circle ";
+		cin >> r;
+		if (r <= 0) {
+			cout << "\nInvalid input";
+			return 0;
+		}
 
-    if (weight <= 0 || weight > 20) {
-        cout << "Your package does not meet our company shipping requirements, we cannot ship this package.";
-        return 0;
-    }
+		problem = 3.14159 * pow(r, 2);
+		
+		cout << "\nThe area of your circle is " << problem;
+		break;
+	case 2:
+		double length, width;
 
-    cout << "How far will your package be shipped? (miles)\n";
-    cin >> miles;
+		cout << "Enter the length of your rectangle ";
+		cin >> length;
+		if (length <= 0) {
+			cout << "\nInvalid input";
+			return 0;
+		}
 
-    if (miles < 10 || miles > 3000) {
-        cout << "Your package is outside our company shipping range, we cannot ship your package.";
-        return 0;
-    }
+		cout << "Enter the width of your rectangle ";
+		cin >> width;
+		if (width <= 0) {
+			cout << "Invalid input";
+			return 0;
+		}
 
-    if (weight <= 2) {
-        rate = miles / 500 * 1.10;
-    }
-    else if (weight <= 6) {
-        rate = miles / 500 * 2.20;
-    }
-    else if (weight <= 10) {
-        rate = miles / 500 * 3.70;
-    }
-    else
-        rate = miles / 500 * 4.80;
+		problem = length * width;
+		cout << "\nThe area of your rectangle is " << problem;
+		break;
+	case 3:
+		double base, height;
 
-    cout << "Your package will cost " << fixed << setprecision (2) << rate;
-    return 0;
+		cout << "\nEnter the base of your triangle ";
+		cin >> base;
+		if (base <= 0) {
+			cout << "\nInvalid input";
+			return 0;
+		}
+
+		cout << "\nEnter the height of your triangle ";
+		cin >> height;
+		if (height <= 0) {
+			cout << "\nInvalid input";
+			return 0;
+		}
+
+		problem = base * height * 0.5;
+		cout << "\nThe area of your triangle is " << problem;
+		break;
+	case 4:
+		cout << "Quitting";
+		break;
+	}
 }
