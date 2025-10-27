@@ -5,9 +5,9 @@ int main()
     bool leap;
     int month, year, day;
 
-    cout << "Enter a month (1-12)";
+    cout << "Enter a month (1-12) ";
     cin >> month;
-    cout << "\nEnter a year";
+    cout << "\nEnter a year ";
     cin >> year;
 
     if (year % 100 == 0) {
