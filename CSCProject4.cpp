@@ -1,54 +1,38 @@
 #include <iostream>
+#include <iomanip>
 using namespace std;
 int main()
 {
-    bool leap;
-    int month, year, day;
+    double weight, miles, rate;
 
-    cout << "Enter a month (1-12)";
-    cin >> month;
-    cout << "\nEnter a year";
-    cin >> year;
+    cout << "What is the weight of your package? (kg)\n";
+    cin >> weight;
 
-    if (year % 100 == 0) {
-        if (year % 400 == 0) {
-            leap = true;
-        }
-        else
-            leap = false;
+    if (weight <= 0 || weight > 20) {
+        cout << "Your package does not meet our company shipping requirements, we cannot ship this package.";
+        return 0;
     }
-    else if (year % 4 == 0) {
-        leap = true;
-    }
-    else {
-        leap = false;
-    }
-    int days;
 
-    if (month == 2) {
-        if (leap == true)
-            days = 29;
-        else
-            days = 28;
+    cout << "How far will your package be shipped? (miles)\n";
+    cin >> miles;
+
+    if (miles < 10 || miles > 3000) {
+        cout << "Your package is outside our company shipping range, we cannot ship your package.";
+        return 0;
     }
-    else {
-        switch (month) {
-        case 1:
-        case 3:
-        case 5:
-        case 7:
-        case 8:
-        case 10:
-        case 12:
-            days = 31;
-            break;
-        case 4:
-        case 6:
-        case 9:
-        case 11:
-            days = 30;
-            break;
-        }
+
+    if (weight <= 2) {
+        rate = miles / 500 * 1.10;
     }
-    cout << days << "days";
+    else if (weight <= 6) {
+        rate = miles / 500 * 2.20;
+    }
+    else if (weight <= 10) {
+        rate = miles / 500 * 3.70;
+    }
+    else
+        rate = miles / 500 * 4.80;
+
+    cout << "Your package will cost " << fixed << setprecision (2) << rate;
+    return 0;
 }
