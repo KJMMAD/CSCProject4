@@ -50,5 +50,5 @@ int main()
             break;
         }
     }
-    cout << days << "days";
+    cout << days << " days";
 }
